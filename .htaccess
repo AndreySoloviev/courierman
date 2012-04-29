@@ -1,0 +1,27 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (\.gif|\.png|\.jpg|\.jpeg|\.ico)$ /images/spacer.gif [NC,L]
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?$1 [QSA,L]
+
+
+<IfModule mod_expires.c>
+    ExpiresByType text/css "access plus 100 hours"
+    ExpiresByType image/x-icon "access plus 100 hours"
+    ExpiresByType image/gif "access plus 100 hours"
+    ExpiresByType image/jpeg "access plus 100 hours"   
+    ExpiresByType image/png "access plus 100 hours"         
+</IfModule>
+
+
+#php_value default_charset UTF-8
+
+# errors
+#php_value error_reporting E_ALL
+#php_value display_errors 1
+#php_value display_startup_errors 1
+#php_value log_errors 1
