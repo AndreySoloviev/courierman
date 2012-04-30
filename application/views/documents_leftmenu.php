@@ -8,8 +8,8 @@
       		<li><a href=/courier/edit_document/><i class=icon-plus></i> Добавить заявку</a></li>
       		
       		<li class="nav-header">Компании</li>
-      		<li><a href=/documents/this_week/>Просмотреть все</a></li>
-      		<li><a href=/users/next_week/><i class=icon-plus></i> Добавить компанию</a></li>
+      		<li><a href=/companys/>Просмотреть все</a></li>
+      		<li><a href=/companys/edit_form/><i class=icon-plus></i> Добавить компанию</a></li>
       		
       	</ul>
       </div>

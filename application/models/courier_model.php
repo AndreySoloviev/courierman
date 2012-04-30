@@ -8,7 +8,7 @@ class Courier_model extends CI_Model {
     
     function get_documents($date_from, $date_to)
     {
-    	$query = $this->db->query("select * from documents where date >= '$date_from' and date <= '$date_to' order by date");
+    	$query = $this->db->query("select * from documents where date_to_go >= '$date_from' and date_to_go <= '$date_to' order by date_to_go");
     	if ($query)
     	{
     		return $query->result();
@@ -19,6 +19,41 @@ class Courier_model extends CI_Model {
     {
     	$query = $this->db->query("select * from documents where id = '$doc_id'");
     	return $query->row();
+    }
+    
+    function update_document($owner_id, $date, $company_id, $person_id, $notes, $backcall_id, $document_id)
+    {
+    	$date  = $this->useful->date_to_mysql($date);
+    	
+    	$data = array(
+               'date_to_go' => $date,
+               'company_id' => $company_id,
+               'person_id' => $person_id,
+               'notes' => $notes,
+               'backcall_id' => $backcall_id          
+            );
+            
+        $this->db->where('id', $document_id);
+		$this->db->update('documents', $data); 		
+		
+    }
+    
+    function add_document($owner_id, $date, $company_id, $person_id, $notes, $backcall_id)
+    {
+
+    	$date  = $this->useful->date_to_mysql($date);
+
+    	$data = array(
+               'owner_id' => $owner_id,
+               'date_to_go' => $date,
+               'company_id' => $company_id,
+               'person_id' => $person_id,
+               'notes' => $notes,
+               'backcall_id' => $backcall_id          
+            );
+
+		$this->db->insert('documents', $data); 		
+		
     }
 }
 

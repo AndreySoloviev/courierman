@@ -40,6 +40,13 @@ class User_model extends CI_Model {
     	return $query->row(); 
     }
     
+    public function get_user_fio($user_id)
+    {
+	    $query = $this->db->get_where('users', array('id' => $user_id));
+    	$data = $query->row();
+    	return $data->surname." ".$data ->name;    
+    }
+    
     function update_user($name,$surname,$email,$password,$flags,$id)
     {
     	$data = array(
