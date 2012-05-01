@@ -21,11 +21,17 @@ class Courier extends Base_controller {
 	{
 		$this->load->view("header.php");
 		$this->load->view("menu.php");		
-		
+
 		switch ($type)
 		{
 			case "this_week" :
 				$data["documents"] = $this->courier_model->get_documents(date("Y-m-d", strtotime("this Monday")), date("Y-m-d", strtotime("this Sunday")));
+			break;
+			case "next_week" :
+				$data["documents"] = $this->courier_model->get_documents(date("Y-m-d", strtotime("this Monday + 1 week")), date("Y-m-d", strtotime("this Sunday + 1 week")));
+			break;
+			case "previous_week" :
+				$data["documents"] = $this->courier_model->get_documents(date("Y-m-d", strtotime("this Monday - 1 week")), date("Y-m-d", strtotime("this Sunday - 1 week")));
 			break;
 		}
 
@@ -33,6 +39,15 @@ class Courier extends Base_controller {
 		
 		$this->load->view("footer");
 	}
+	
+	public function print_day($day)
+	{
+		$this->load->view("header.php");	
+		$data["documents"] = $this->courier_model->get_documents($day, $day);
+		
+		$this->load->view("documents_print_day", $data);
+	}
+	
 	
 	public function edit_document($doc_id = 0)
 	{

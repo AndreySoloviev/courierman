@@ -4,11 +4,9 @@ class Useful {
 
     public function date_to_mysql($date)
     {
-    	$format = "d-m-Y";
-    	
-    	$date = date_parse_from_format($format, "$date");    
-
-    		
+    	$format = 'd-m-Y';
+ 		$date = date_parse_from_format($format, $date);    
+		
     	return $date["year"]."-".$date["month"]."-".$date["day"];
     }
     
@@ -25,6 +23,13 @@ class Useful {
 		$months = array("","января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря");
     	$date = date_parse_from_format($format, $date);    	
     	return $date["day"]." ".$months[$date["month"]]." ".$date["year"];    
+    }
+    
+    public function day_of_week_from_mysql($date)
+    {
+    	$days = array("","понедельник","вторник","среда","четверг","пятница","суббота","воскресенье");
+    	return $days[date('N', strtotime($date))];
+    	
     }
 }
 

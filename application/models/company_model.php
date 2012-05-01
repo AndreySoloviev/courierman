@@ -33,10 +33,23 @@ class Company_model extends CI_Model {
     {
     	$query = $this->db->get_where('companys', array('id' => $company_id));
     	$data = $query->row(); 
-    	return $data->name;
-	
+    	return $data->name;	
     }
     
+    public function get_company_phone($company_id)
+    {
+    	$query = $this->db->get_where('companys', array('id' => $company_id));
+    	$data = $query->row(); 
+    	return $data->phone;	
+    }
+
+    public function get_company_address($company_id)
+    {
+    	$query = $this->db->get_where('companys', array('id' => $company_id));
+    	$data = $query->row(); 
+    	return $data->address;	
+    }
+        
     function get_person_data($person_id)
     {
     	$query = $this->db->get_where('persons', array('id' => $person_id));
@@ -47,7 +60,14 @@ class Company_model extends CI_Model {
     {
 	    $query = $this->db->get_where('persons', array('id' => $user_id));
     	$data = $query->row();
-    	return $data->surname." ".$data ->name;    
+    	return $data->surname."&nbsp;".$data ->name;    
+    }
+    
+    public function get_person_phone($user_id)
+    {
+	    $query = $this->db->get_where('persons', array('id' => $user_id));
+    	$data = $query->row();
+    	return $data->phone;    
     }
     
     function update_company($name,$phone,$address,$id)
