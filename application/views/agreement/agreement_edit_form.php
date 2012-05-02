@@ -46,15 +46,13 @@
 		    <div class="control-group">
 		      <label class="control-label" for="input01">Дата заключения</label>
 		      <div class="controls">
-		        <input type="text" class="input-small" id="dp1" name="date_sign" value="
-		        <?
-		        	if (@$agreement->date_sign) {
-		        		echo @$agreement->date_sign;
+		        <input type="text" class="input-small" id="dp1" name="date_sign" value="<?
+		        	if (@$agreement->date_sign != "") {
+		        		echo $this->useful->date_from_mysql($agreement->date_sign);
 		        	}
 		        	else {
 		        		echo date("d-m-Y");
-		        	}
-		        ?>">		        
+		        	}?>">		        
 		      </div>
 		    </div>
 		    

@@ -52,8 +52,11 @@ class Agreement_model extends CI_Model {
 		$this->db->insert('agreements', $data); 			
 	}
     
-    
-    
+    function get_agreement_appositions($agreement_id)
+    {
+    	$query = $this->db->get_where('appositions', array('agreement_id' => $agreement_id));
+    	return $query->result(); 	
+    }
     
     
     

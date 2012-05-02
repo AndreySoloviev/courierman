@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # http://code.google.com/p/sequel-pro/
 #
-# Адрес: localhost (MySQL 5.5.9)
+# Адрес: localhost (MySQL 5.1.44)
 # Схема: valencia
-# Время создания: 2012-05-02 13:45:39 +0000
+# Время создания: 2012-05-02 21:25:33 +0000
 # ************************************************************
 
 
@@ -41,7 +41,8 @@ LOCK TABLES `agreements` WRITE;
 INSERT INTO `agreements` (`id`, `company_id`, `number`, `date_sign`, `is_sent`, `is_returned`)
 VALUES
 	(1,2,'143/d','0005-12-20',1,1),
-	(2,1,'12','0005-12-20',1,0);
+	(2,1,'14','2012-12-05',1,0),
+	(3,1,'12','2017-05-05',0,0);
 
 /*!40000 ALTER TABLE `agreements` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -61,9 +62,20 @@ CREATE TABLE `appositions` (
   `faktura_date` date DEFAULT NULL,
   `is_statement_returned` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
+  `number` char(64) DEFAULT NULL,
+  `date_sign` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `appositions` WRITE;
+/*!40000 ALTER TABLE `appositions` DISABLE KEYS */;
+
+INSERT INTO `appositions` (`id`, `agreement_id`, `type`, `invoice_date`, `statement_date`, `faktura_date`, `is_statement_returned`, `user_id`, `number`, `date_sign`)
+VALUES
+	(1,1,NULL,'2012-10-11',NULL,NULL,NULL,2,'1','2012-11-11');
+
+/*!40000 ALTER TABLE `appositions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Дамп таблицы companys
@@ -110,6 +122,15 @@ CREATE TABLE `documents` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+LOCK TABLES `documents` WRITE;
+/*!40000 ALTER TABLE `documents` DISABLE KEYS */;
+
+INSERT INTO `documents` (`id`, `company_id`, `date_to_go`, `flags`, `history`, `notes`, `owner_id`, `backcall_id`, `person_id`)
+VALUES
+	(1,1,'2012-05-03',NULL,NULL,'sdf',1,2,0);
+
+/*!40000 ALTER TABLE `documents` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Дамп таблицы persons

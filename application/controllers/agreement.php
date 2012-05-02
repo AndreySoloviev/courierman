@@ -73,6 +73,18 @@ class Agreement extends Base_controller {
 
 	}
 	
+	public function agreement_info($agreement_id)
+	{
+		$this->load->view("header.php");
+		$this->load->view("menu.php");
+		
+		$data["agreement"] = $this->agreement_model->get_agreement_data($agreement_id);
+		$data["appositions"] = $this->agreement_model->get_agreement_appositions($agreement_id);
+		
+		$this->load->view("/agreement/agreement_info.php", $data);
+		$this->load->view("footer");	
+	}
+	
 	
 	
 	
