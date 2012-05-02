@@ -126,13 +126,8 @@
             }
         });
     }
-</script> 
-
-
-
-<script>
+    
 		$(function(){
-			//window.prettyPrint && prettyPrint();
 			$('#dp1').datepicker({
 				format: 'dd-mm-yyyy',
 				weekStart: 1

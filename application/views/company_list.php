@@ -9,10 +9,8 @@
 		  <tbody>
 		    <? foreach ($companys as $company) { ?>
 		    <tr>
-		      <td><?=$company->name?></td>
-		      <td> 
-		      	<i class=icon-user></i> <a href=/companys/show_company/<?=$company->id?>/>Контакты</a>
-		      </td>
+		      <td><a rel="tooltip" title="Нажмите, чтобы увидеть сотрудников и дополнительную информацию" href=/companys/show_company/<?=$company->id?>/><?=$company->name?></a></td>
+		     
 		      <td> 
 		      	<i class=icon-pencil></i> <a href=/companys/edit_form/<?=$company->id?>/>Редактировать компанию</a>
 		      </td>

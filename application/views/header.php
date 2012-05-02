@@ -12,6 +12,7 @@
     <script src="http://yandex.st/jquery/1.7.1/jquery.min.js"></script>
     <script src="/js/bootstrap-dropdown.js"></script>
     <script src="/js/bootstrap-datepicker.js"></script>
+    <script src="/js/bootstrap-tooltip.js"></script>
         
 </head>
 <body style="padding-top: 60px;">
