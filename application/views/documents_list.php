@@ -29,12 +29,10 @@
 			  		<tbody>
 			  		<tr><td colspan=4 style='text-align:right;'><i class=icon-print></i> <a href=/courier/print_day/$date/>распечатать лист</a></td></tr>
 			  		
-			  		";
-			    	
+			  		";			    	
 			    }
 			    
-		    ?>
-		  			  		
+		    ?>		  			  		
 		  		<tr>
 		  			<td><? echo $this->company_model->get_company_name($document->company_id); ?></td>
 		  			<td><? if ($document->person_id)

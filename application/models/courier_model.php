@@ -13,6 +13,7 @@ class Courier_model extends CI_Model {
     	{
     		return $query->result();
     	}
+
     }
     
     function get_one_document($doc_id)
@@ -54,6 +55,15 @@ class Courier_model extends CI_Model {
 
 		$this->db->insert('documents', $data); 		
 		
+    }
+    
+    function delete_document($id)
+    {
+    	$query = $this->db->query("delete from documents where id = '$id'");
+		if ($query)
+		{
+			return true;
+		}
     }
 }
 

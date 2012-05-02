@@ -32,9 +32,9 @@ class Sessions extends CI_Controller
 				$this->session->set_userdata('surname', $data["surname"]);
 				$this->session->set_userdata('email', $data["email"]);
 				$this->session->set_userdata('flags', $data["flags"]);
-				echo "OK";
+				
             }
-            //header('Location: /');
+            header('Location: /courier/documents/this_week/');
         }
         else
         {
@@ -46,7 +46,7 @@ class Sessions extends CI_Controller
     public function logout()
     {
         $this->session->unset_userdata('loggedin');
-        header('Location: /');
+        header('Location: /login/');
     }
 }
 

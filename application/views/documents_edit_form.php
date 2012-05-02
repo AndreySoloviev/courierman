@@ -96,7 +96,9 @@
 		    
 		  </fieldset>
 		</form>
-        
+		<? if ($doc != null) {?> <div style="float: right;"><a href=/courier/delete_document/<?=$doc->id?>/>Удалить заявку</div> <? }?>
+
+        <div style="float: right;"><a href=/courier/delete_document/Удалить заявку</div>
     </div>
   </div>
 </div>

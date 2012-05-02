@@ -45,7 +45,10 @@
 | the active record class
 */
 
-$active_group = 'default';
+$active_group = 'server';
+if ($_SERVER["HTTP_HOST"] == "valencia.loc") { $active_group = 'default'; }
+
+
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
@@ -64,6 +67,21 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+$db['server']['hostname'] = 'localhost';
+$db['server']['username'] = 'valenciauser';
+$db['server']['password'] = 'cornholio';
+$db['server']['database'] = 'valencia';
+$db['server']['dbdriver'] = 'mysql';
+$db['server']['dbprefix'] = '';
+$db['server']['pconnect'] = TRUE;
+$db['server']['db_debug'] = TRUE;
+$db['server']['cache_on'] = FALSE;
+$db['server']['cachedir'] = '';
+$db['server']['char_set'] = 'utf8';
+$db['server']['dbcollat'] = 'utf8_general_ci';
+$db['server']['swap_pre'] = '';
+$db['server']['autoinit'] = TRUE;
+$db['server']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

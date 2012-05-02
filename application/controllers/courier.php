@@ -9,7 +9,7 @@ class Courier extends Base_controller {
         parent::__construct();
         $this->load->model("user_model");
         $this->load->model("courier_model");
-        $this->load->model("company_model");
+        $this->load->model("company_model");    	
     }
 	
 	public function index()
@@ -21,19 +21,22 @@ class Courier extends Base_controller {
 	{
 		$this->load->view("header.php");
 		$this->load->view("menu.php");		
-
+		
+		$day_today = date("w");
+				
 		switch ($type)
 		{
 			case "this_week" :
-				$data["documents"] = $this->courier_model->get_documents(date("Y-m-d", strtotime("this Monday")), date("Y-m-d", strtotime("this Sunday")));
-			break;
+				$data["documents"] = $this->courier_model->get_documents(date("Y-m-d", time() - (($day_today - 1)*24*60*60) ), date("Y-m-d", time() + ((8-$day_today)*24*60*60)));
+				break;
 			case "next_week" :
-				$data["documents"] = $this->courier_model->get_documents(date("Y-m-d", strtotime("this Monday + 1 week")), date("Y-m-d", strtotime("this Sunday + 1 week")));
-			break;
-			case "previous_week" :
-				$data["documents"] = $this->courier_model->get_documents(date("Y-m-d", strtotime("this Monday - 1 week")), date("Y-m-d", strtotime("this Sunday - 1 week")));
-			break;
+				$data["documents"] = $this->courier_model->get_documents(date("Y-m-d", time() + ((8 - $day_today)*24*60*60) ), date("Y-m-d", time() + ((7-$day_today)*24*60*60  + 7*24*60*60)));
+				break;
+			case "last_week" :
+				$data["documents"] = $this->courier_model->get_documents(date("Y-m-d", time() - (($day_today - 1)*24*60*60) - 7*24*60*60), date("Y-m-d", time() + ((7-$day_today)*24*60*60 - 7*24*60*60)));
+				break;
 		}
+
 
 		$this->load->view("documents_list", $data);
 		
@@ -92,6 +95,12 @@ class Courier extends Base_controller {
 		}
 		
 		header('Location: /courier/');
+	}
+	
+	public function delete_document($id)
+	{
+		$this->courier_model->delete_document($id);
+		header("Location: /courier/ ");
 	}
 
 

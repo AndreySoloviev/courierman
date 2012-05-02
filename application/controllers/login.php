@@ -6,7 +6,7 @@ class Login extends Base_controller {
 
 	public function index()
 	{
-		print_r( $this->session->all_userdata() );		
+		header("Location: /courier/");		
 	}
 
 
