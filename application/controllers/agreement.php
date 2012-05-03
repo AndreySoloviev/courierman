@@ -86,8 +86,64 @@ class Agreement extends Base_controller {
 	}
 	
 	
-	
-	
+	public function edit_apposition_form($agreement_id, $apposition_id = 0)
+	{
+		$this->load->view("header.php");
+		$this->load->view("menu.php");
+		
+		$data["agreement"] = $this->agreement_model->get_agreement_data($agreement_id);
+		$data["users"] = $this->user_model->get_all_users();
+		
+		if ($apposition_id == 0)
+		{
+			$data["apposition"] = null;
+		}
+		else
+		{
+			$data["apposition"] = $this->agreement_model->get_apposition_data($apposition_id);
+		}
+		$this->load->view("/agreement/apposition_edit_form.php", $data);
+		$this->load->view("footer");		
+	}
+
+	public function save_apposition()
+	{
+		$id = $this->input->post('id');
+		
+		$number = $this->input->post('number');
+		$agreement_id = $this->input->post('agreement_id');
+		$type = $this->input->post('type');
+		$sign_date = $this->useful->date_to_mysql($this->input->post('sign_date'));
+		$invoice_date = $this->useful->date_to_mysql($this->input->post('invoice_date'));
+		$payment_date = $this->useful->date_to_mysql($this->input->post('payment_date'));
+		$statement_date = $this->useful->date_to_mysql($this->input->post('statement_date'));
+		$user_id = $this->input->post('user_id');
+		
+		if ( @$this->input->post('is_statement_returned') ) 
+			$is_statement_returned = 1;
+		else
+			$is_statement_returned = 0;
+		
+		if ( @$this->input->post('is_statement_signed') ) 
+			$is_statement_signed = 1;
+		else
+			$is_statement_signed = 0;
+			
+			
+			
+		if (!$id)
+		{
+			$this->agreement_model->add_apposition($number, $agreement_id, $type, $sign_date, $invoice_date, $payment_date, $statement_date, $user_id, $is_statement_returned, $is_statement_signed);
+		}
+		else
+		{
+			$this->agreement_model->update_apposition($number, $agreement_id, $type, $sign_date, $invoice_date, $payment_date, $statement_date, $user_id, $is_statement_returned, $is_statement_signed, $id);
+		}
+		
+		header('Location: /agreement/agreement_info/'.$agreement_id.'/');
+
+	}
+
 	
 	
 	

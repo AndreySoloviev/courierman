@@ -26,6 +26,12 @@ class Agreement_model extends CI_Model {
     	return $query->row(); 
     }
     
+    function get_apposition_data($apposition_id)
+    {
+    	$query = $this->db->get_where('appositions', array('id' => $apposition_id));
+    	return $query->row(); 
+    }
+    
     
     function update_agreement($number, $company_id, $date_sign, $is_sent, $is_returned, $id)
     {
@@ -57,6 +63,84 @@ class Agreement_model extends CI_Model {
     	$query = $this->db->get_where('appositions', array('agreement_id' => $agreement_id));
     	return $query->result(); 	
     }
+    
+    
+    function update_apposition($number, $agreement_id, $type, $sign_date, $invoice_date, $payment_date, $statement_date, $user_id, $is_statement_returned, $is_statement_signed, $id)
+    {
+    	$data = array(
+               'agreement_id' => $agreement_id,
+               'number' => $number,
+               'type' => $type,
+               'sign_date' => $sign_date,
+               'invoice_date' => $invoice_date,
+               'payment_date' => $payment_date,
+               'statement_date' => $statement_date,
+               'user_id' => $user_id,
+               'is_statement_returned' => $is_statement_returned,
+               'is_statement_signed' => $is_statement_signed
+                         
+            );
+        $this->db->where('id', $id);
+		$this->db->update('appositions', $data); 		
+    }
+    
+    
+    function add_apposition($number, $agreement_id, $type, $sign_date, $invoice_date, $payment_date, $statement_date, $user_id, $is_statement_returned, $is_statement_signed)
+    {
+    	$data = array(
+               'agreement_id' => $agreement_id,
+               'number' => $number,
+               'type' => $type,
+               'sign_date' => $sign_date,
+               'invoice_date' => $invoice_date,
+               'payment_date' => $payment_date,
+               'statement_date' => $statement_date,
+               'user_id' => $user_id,
+               'is_statement_returned' => $is_statement_returned,
+               'is_statement_signed' => $is_statement_signed                         
+            );
+
+		$this->db->insert('appositions', $data); 		
+    }
+    
+    
+	function get_unpayed_agreements_count($agreement_id)
+	{
+		// Возвращаем кол-во неоплаченных приложений
+		$query = $this->db->query("Select * from appositions where 
+									agreement_id = '$agreement_id' and
+									payment_date < sign_date");
+		return $query->num_rows();
+	}
+	
+	function get_unclosed_appositions_count($agreement_id)
+	{
+		// Возвращем кол-во приложений без закрывающих
+		$query = $this->db->query("Select * from appositions where 
+									agreement_id = '$agreement_id' and
+									statement_date < NOW() and
+									is_statement_signed = '0'");
+		return $query->num_rows();
+	}
+	
+	function get_unreturned_appositions_count($agreement_id)
+	{
+		// Возвращем кол-во приложений без закрывающих
+		$query = $this->db->query("Select * from appositions where 
+									agreement_id = '$agreement_id' and
+									statement_date < NOW() and
+									is_statement_signed = '1' and
+									is_statement_returned = '0'");
+		return $query->num_rows();
+	}
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
