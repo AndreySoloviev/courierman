@@ -36,9 +36,16 @@
 		    </div>
 		    
 		    <div class="control-group">
+		      <label class="control-label" for="input01">Телефон</label>
+		      <div class="controls">
+		        <input type="text" class="input-xlarge" id="input01" name="phone" value="<?=@$user->phone?>">		        
+		      </div>
+		    </div>
+		    
+		    <div class="control-group">
 		      <label class="control-label" for="input01">Пароль</label>
 		      <div class="controls">
-		        <input type="text" class="input-large" id="input01" name="password" value="<?=@$user->password?>">		        
+		        <input type="password" class="input-large" id="input01" name="password" value="<?=@$user->password?>">		        
 		      </div>
 		    </div>
 		    

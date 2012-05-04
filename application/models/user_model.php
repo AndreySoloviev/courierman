@@ -50,12 +50,13 @@ class User_model extends CI_Model {
     }
     
     
-    function update_user($name,$surname,$email,$password,$flags,$id)
+    function update_user($name,$surname,$email,$phone,$password,$flags,$id)
     {
     	$data = array(
                'name' => $name,
                'surname' => $surname,
                'email' => $email,
+               'phone' => $phone,
                'password' => $password,
                'flags' => $flags
             
@@ -64,12 +65,13 @@ class User_model extends CI_Model {
 		$this->db->update('users', $data); 		
     }
 
-	function add_user($name,$surname,$email,$password,$flags)
+	function add_user($name,$surname,$email,$phone,$password,$flags)
 	{
 		   $data = array(
                'name' => $name,
                'surname' => $surname,
                'email' => $email,
+               'phone' => $phone,
                'password' => $password,
                'flags' => $flags
             

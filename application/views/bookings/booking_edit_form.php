@@ -8,7 +8,7 @@
 		<table class="table">
 		<tr><td>
 		    <div class="control-group">
-		      <label class="control-label" for="input01">Клиент</label>
+		      <label class="control-label" for="input01">Плательщик</label>
 		      <div class="controls">
 		        <input type="text" class="input-xlarge" id="input01">&nbsp;&nbsp;
 		        	<label class="checkbox inline">
@@ -19,16 +19,33 @@
 		
 			     
 		    <div class="control-group">
-		      <label class="control-label" for="input01">Заказчик</label>
+		      <label class="control-label" for="input01">Селлинговый агент</label>
 		      <div class="controls">
 		        <input type="text" class="input-xlarge" id="input01">
 		      </div>
 		    </div>   
 		
-			    <div class="control-group">
-		      <label class="control-label" for="input01">Клиентское агентство</label>
+			<div class="control-group">
+		      <label class="control-label" for="input01">Рекламное агентство</label>
 		      <div class="controls">
 		        <input type="text" class="input-xlarge" id="input01">
+		      </div>
+		    </div>
+		    
+		    <div class="control-group">
+		      <label class="control-label" for="input01">Кампания</label>
+		      <div class="controls">
+		      <div class="control-group">
+			      <label class="control-label" for="input01">Htrkfvf</label>
+			      <div class="controls">
+			        <span style="width:1150px;">Название</span> <input type="text" class="input-small" id="input01"><br>			        
+			      </div>
+			      <div class="controls">
+			        <span style="width:1150px;">Название</span> <input type="text" class="input-small" id="input01"><br>			        
+			      </div>
+			      
+		    </div>
+
 		      </div>
 		    </div>
 		
@@ -104,44 +121,11 @@
 		    <div class="control-group">
 		      <label class="control-label" for="input01">Документы и оплата</label>
 		      <div class="controls">
-		      <div class="input-append">
-                <input style="width: 100px;" id="appendedInput"  type="text"><span class="add-on">приложение составлено</span>
-              </div>
-              <hr style="margin: 8px; border: none;">
-              <div class="input-append">
-                <input style="width: 100px;" id="appendedInput"  type="text"><span class="add-on">отправлено заказчику</span>
-              </div>
-              <hr style="margin: 8px; border: none;">
-              <div class="input-append">
-                <input style="width: 100px;" id="appendedInput"  type="text"><span class="add-on">счет выставлен</span>
-              </div>
-			  <hr style="margin: 8px; border: none;">
-              <div class="input-append">
-                <input style="width: 100px;" id="appendedInput"  type="text"><span class="add-on">закрывающие сформированы</span>
-              </div>
-			  <hr style="margin: 8px; border: none;">
-              <div class="input-append">
-                <input style="width: 100px;" id="appendedInput"  type="text"><span class="add-on">все бумаги получены от заказчика</span>
-              </div>
-	
-
-              
-              <label class="checkbox">
-                <input type="checkbox" id="optionsCheckbox" value="option1">
-                Приложение отправлено заказчику
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" id="optionsCheckbox" value="option1">
-                Счет выставлен
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" id="optionsCheckbox" value="option1">
-                Закрывающие отправлены
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" id="optionsCheckbox" value="option1">
-                Все документы получены от заказчика
-              </label>
+			      <div class="input-append">
+	                <select style="width: 100px;" id="appendedInput"  type="text">
+	                <option>sf</option>
+	                </select><span class="add-on">приложение составлено</span>
+	              </div>
               </div>
 		    </div>
 		

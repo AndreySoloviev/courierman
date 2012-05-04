@@ -43,6 +43,7 @@ class Users extends Base_controller {
 		$name = $this->input->post('name');
 		$surname = $this->input->post('surname');
 		$email = $this->input->post('email');
+		$phone = $this->input->post('phone');
 		$password = $this->input->post('password');
 		
 		$flags = 0 << 0;
@@ -56,11 +57,11 @@ class Users extends Base_controller {
 		
 		if (!$id)
 		{
-			$this->user_model->add_user($name,$surname,$email,$password,$flags);
+			$this->user_model->add_user($name,$surname,$email,$phone,$password,$flags);
 		}
 		else
 		{
-			$this->user_model->update_user($name,$surname,$email,$password,$flags,$id);
+			$this->user_model->update_user($name,$surname,$email,$phone,$password,$flags,$id);
 		}
 		
 		header('Location: /users/');
