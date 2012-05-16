@@ -7,6 +7,8 @@
 	  <fieldset>
 		<table class="table">
 		<tr><td>
+		    
+		    
 		    <div class="control-group">
 		      <label class="control-label" for="input01">Плательщик</label>
 		      <div class="controls">
@@ -32,20 +34,7 @@
 		      </div>
 		    </div>
 		    
-		    <div class="control-group">
-		      <label class="control-label" for="input01">Кампания</label>
-		      <div class="controls">
-		      <div class="control-group">
-			      <label class="control-label" for="input01">Htrkfvf</label>
-			      <div class="controls">
-			        <span style="width:1150px;">Название</span> <input type="text" class="input-small" id="input01"><br>			        
-			      </div>
-			      <div class="controls">
-			        <span style="width:1150px;">Название</span> <input type="text" class="input-small" id="input01"><br>			        
-			      </div>
-			      
-		    </div>
-
+		   
 		      </div>
 		    </div>
 		
