@@ -14,7 +14,7 @@
     		<ul class="dropdown-menu">
                 <li><a href="/companys/">Компании-контрагенты</a></li>
                 <li><a href="/agreement/">Договора / приложения / акты</a></li>
-                <li><a href="#">Типы размещений</a></li>
+                <li><a href="/adv_types/">Типы размещений</a></li>
                 <li class="divider"></li>
                 <li><a href="/users/">Пользователи</a></li>
 
