@@ -195,6 +195,7 @@
 <script type="text/javascript">
     
     $(document).ready(function(){
+      
         $(".doc_company").change(function(event){
             event.preventDefault();
             formCityAjaxValue( $('.doc_company').val() );
