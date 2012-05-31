@@ -19,6 +19,20 @@ class Agreement_model extends CI_Model {
     	$query = $this->db->get_where('appositions', array('agreement_id' => $agreement_id));    	
     	return $query->num_rows(); 	
     }
+    
+    function get_agreemnts_list($company_id)
+    {
+    	$query = $this->db->get_where('agreements', array('company_id' => $company_id));    	
+    	return $query->result();   	
+    }
+    
+    function get_appositions_list($agreement_id)
+    {
+    	$query = $this->db->get_where('appositions', array('agreement_id' => $company_id));    	
+    	return $query->result();   	
+    }
+    
+    
    
     function get_agreement_data($agreement_id)
     {

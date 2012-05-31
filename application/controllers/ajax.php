@@ -10,6 +10,7 @@ class Ajax extends Base_controller {
         $this->load->model("company_model");
         $this->load->model("user_model");
         $this->load->model("courier_model");
+        $this->load->model("agreement_model");
     }
 	
 	public function index()
@@ -28,6 +29,33 @@ class Ajax extends Base_controller {
         }
         echo "</select>";
     }
+    
+    function dogovor_select($company_id) {
+        $company_id = intval($company_id);
+        
+        $agreements = $this->agreement_model->get_agreemnts_list($company_id);
+        echo "<select name='doc_dogovor_number'  id='doc_dogovor_number' class='doc_dogovor_number' >";
+        echo "<option value=\"0\">-- Укажите номер договора --</option>\n";
+        foreach ($agreements as $agreement) {
+            echo "<option value='$agreement->id'>$agreement->number от ".$this->useful->date_human_from_mysql($agreement->date_sign)."</option>\n";
+        }
+        echo "</select> ";
+    }
+    
+    function apposition_select($agreement_id) {
+        $agreemnt_id = intval($company_id);
+        
+        $aps = $this->agreement_model->get_appositions_list($agreement_id);
+        echo "<select name=doc_agreement id=doc_agreement class=doc_agreement>";
+        echo "<option value=\"0\">-- Укажите приложение --</option>\n";
+        foreach ($aps as $ap) {
+            echo "<option value='$ap->id'>$ap->number  (закрываем ".$this->useful->date_human_from_mysql($ap->date_statement).")</option>\n";
+        }
+        echo "</select> ";
+    }
+
+    
+    
 		
 }
 

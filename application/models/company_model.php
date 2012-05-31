@@ -23,6 +23,18 @@ class Company_model extends CI_Model {
     	return $query->result(); 
     }
     
+    function get_companys_list_with_agreements()
+    {
+    	$query = $this->db->query("
+    		select c.id, c.name from companys c, agreements a
+    			where
+    		c.id = a.company_id 
+    			group by c.name 
+    			order by c.name");
+    			
+    	return $query->result(); 
+    }
+    
     function get_company_data($company_id)
     {
     	$query = $this->db->get_where('companys', array('id' => $company_id));

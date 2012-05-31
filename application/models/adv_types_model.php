@@ -17,11 +17,11 @@ class Adv_types_model extends CI_Model {
     
 
     
-    function get_companys_list()
+    function get_adv_types_list()
     {
     	$this->db->order_by("name"); 
     	$this->db->select('name, id');
-    	$query = $this->db->get('companys');
+    	$query = $this->db->get('adv_types');
     	return $query->result(); 
     }
     

@@ -9,6 +9,9 @@ class Booking extends Base_controller {
         parent::__construct();
         $this->load->model("user_model");
         $this->load->model("booking_model");
+        $this->load->model("company_model");
+        $this->load->model("agreement_model");
+        $this->load->model("adv_types_model");
     }
 	
 	public function index()
@@ -35,6 +38,12 @@ class Booking extends Base_controller {
 		{
 			$data["booking"] = $this->booking_model->get_booking_data($user_id);
 		}
+		
+		$data["companys"] = $this->company_model->get_companys_list();
+		$data["adv_types"] = $this->adv_types_model->get_adv_types_list();
+		$data["users"] = $this->user_model->get_all_users();
+		$data["companys_with_agreement"] = $this->company_model->get_companys_list_with_agreements();
+		
 		$this->load->view("bookings/booking_edit_form.php", $data);
 		$this->load->view("footer");		
 	}
