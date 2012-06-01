@@ -28,7 +28,7 @@ class Agreement_model extends CI_Model {
     
     function get_appositions_list($agreement_id)
     {
-    	$query = $this->db->get_where('appositions', array('agreement_id' => $company_id));    	
+    	$query = $this->db->get_where('appositions', array('agreement_id' => $agreement_id));    	
     	return $query->result();   	
     }
     

@@ -159,7 +159,7 @@
 	             
 	             <div id="doc_select_box" style="display: none;">
 	             
-	             <select name="payer" id="doc_company" class="doc_company">
+	             <select name="doc_company" id="doc_company" class="doc_company">
 		            <option>-- Выберите компанию --</option>
 		        	<?php 
 		        		foreach ($companys_with_agreement as $company)
@@ -169,15 +169,14 @@
 		        	?>
 		        </select>
 		        
-		        <select name="payer1" id="doc_dogovor_number" class="doc_dogovor_number" style="display:none">
-		            <option>-- Укажите номер договора --</option>		        	
+		        <select name="doc_agreement" id="doc_agreement" class="doc_agreement" style="display:none">	        	
 		        </select>
 		        
 		        
-		        <select name="payer2" id="doc_agreement" class=doc_agreement style="display:none">
-		            
+		        <select name="doc_app" id="doc_apposition"  style="display:none">		            
 		        </select>
-		        <a href=# onclick="setAgreementId()" class=btn>Выбрать</a>
+		       
+		        <a href=# id=appbtn onclick="setAgreementId()" class=btn style="display: none;">Выбрать</a>
 	             </div>
               </div>
 		    </div>		    
@@ -195,66 +194,62 @@
 <script type="text/javascript">
     
     $(document).ready(function(){
-      
-        $(".doc_company").change(function(event){
-            event.preventDefault();
-            formAgreementAjaxValue( $('.doc_company').val() );
-        });
-    
-        $("#agreement_number").change(function(event){
-            alert("s");
-            event.preventDefault();
-            formAppositionAjaxValue( $('.agreement_number').val() );
-        });
-        
+        $("#doc_company").bind('change', formCityAjaxValue);     
     });
    
 
-    function formAgreementAjaxValue(company_id)
+    function formCityAjaxValue()
     {        
-        $("#doc_dogovor_number").attr('disabled', 'true');
-
         $.ajax({
             type: "POST",
-            url: "/ajax/dogovor_select/"+ company_id,
+            url: "/ajax/dogovor_select/"+ $('#doc_company').val(),
             data: "",
-            success: function(msg){            	
-
-                $('.doc_dogovor_number').replaceWith(msg);
-                $('#doc_dogovor_number').replaceWith(msg);
-                $('#doc_dogovor_number').css('display', 'block');
-               
-            }
+            success: function(msg){            	               
+                $('#doc_agreement').html(msg);
+                $('#doc_agreement').css('display', 'inline');
+                $('#doc_agreement').bind('change', formAppositionsAjaxValue);
+           }
         });
     }
-
-  
-    function formAppositionAjaxValue(agreement_id)
-    {
-    	alert("2");
+    
+    function formAppositionsAjaxValue()
+    {  
+        
         $.ajax({
             type: "POST",
-            url: "/ajax/apposition_select/"+ agreement_id,
+            url: "/ajax/apposition_select/"+ $('#doc_agreement').val(),
             data: "",
             success: function(msg){            	
-                $('.doc_agreement').replaceWith(msg);
-                $('#doc_agreement').replaceWith(msg);
-                $('#doc_agreement').css('display', 'block');
+                $('#doc_apposition').replaceWith(msg);
+                $('#doc_apposition').css('display', 'inline');
+                $('#appbtn').css('display', 'inline');
             }
         });
+        
     }
 
 
     
     function showBox()
     {
-	    $("#doc_select_box").css('display', 'block');	    
+	    $("#doc_select_box").css('display', 'inline');	    
     }
     
     function setAgreementId()
     {
-	 	$("#doc_select_box").css('display', 'none');   
-	    $("#agreementText").replaceWith("Задали!");
+	 	
+	 	if ($('#doc_apposition').val() == "0")
+	 	{
+		 	alert("Вы не выбрали номери приложения!");
+	 	}
+	 	else
+	 	{
+	 		$("#doc_select_box").css('display', 'none');   	    
+	 		$("#agreementText").replaceWith(
+	 			"Приложение №" + $('#doc_apposition option:selected').html() + " к договору №" + $('#doc_agreement option:selected').html() + " (" + $('#doc_company option:selected').html() + ")"
+	 		);		 	
+	 	}
+
     }
     
 
