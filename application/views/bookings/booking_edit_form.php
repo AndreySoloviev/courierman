@@ -198,19 +198,19 @@
       
         $(".doc_company").change(function(event){
             event.preventDefault();
-            formCityAjaxValue( $('.doc_company').val() );
+            formAgreementAjaxValue( $('.doc_company').val() );
         });
     
-         $(".doc_dogovor_number").change(function(event){
-        	alert("1");
+        $("#agreement_number").change(function(event){
+            alert("s");
             event.preventDefault();
-            formAppositionsAjaxValue( $('#doc_dogovor_number').val() );
+            formAppositionAjaxValue( $('.agreement_number').val() );
         });
         
     });
    
 
-    function formCityAjaxValue(company_id)
+    function formAgreementAjaxValue(company_id)
     {        
         $("#doc_dogovor_number").attr('disabled', 'true');
 
@@ -227,13 +227,11 @@
             }
         });
     }
-    
 
-   
-
-    function formAppositionsAjaxValue(agreement_id)
+  
+    function formAppositionAjaxValue(agreement_id)
     {
-    
+    	alert("2");
         $.ajax({
             type: "POST",
             url: "/ajax/apposition_select/"+ agreement_id,

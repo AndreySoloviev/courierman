@@ -22,7 +22,7 @@ class Ajax extends Base_controller {
         $company_id = intval($company_id);
         
         $persons = $this->company_model->get_persons_from_company($company_id);
-        echo "<select name=person_id  class='form_company_sel' id='person_sel'>";
+        echo "<select name=company_id  class='form_company_sel' id='form_company_sel'>";
         echo "<option value=\"\">Ресепшн</option>\n";
         foreach ($persons as $person) {
             echo "<option value='$person->id'>$person->surname $person->name</option>\n";
@@ -34,7 +34,7 @@ class Ajax extends Base_controller {
         $company_id = intval($company_id);
         
         $agreements = $this->agreement_model->get_agreemnts_list($company_id);
-        echo "<select name='doc_dogovor_number'  id='doc_dogovor_number' class='doc_dogovor_number' >";
+        echo "<select name=agreement_number  id=agreement_number class=agreement_number>";
         echo "<option value=\"0\">-- Укажите номер договора --</option>\n";
         foreach ($agreements as $agreement) {
             echo "<option value='$agreement->id'>$agreement->number от ".$this->useful->date_human_from_mysql($agreement->date_sign)."</option>\n";
