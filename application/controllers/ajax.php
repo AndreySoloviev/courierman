@@ -34,7 +34,7 @@ class Ajax extends Base_controller {
         $company_id = intval($company_id);
         
         $agreements = $this->agreement_model->get_agreemnts_list($company_id);
-        echo "\n<select name=agreement_number  id=agreement_number class=agreement_number  onchange='formAppositionsAjaxValue();'>";
+        echo "\n<select  id=agreement_number class=agreement_number  onchange='formAppositionsAjaxValue();'>";
         echo "<option value=\"0\">-- Укажите номер договора --</option>\n";
         foreach ($agreements as $agreement) {
             echo "<option value='$agreement->id'>$agreement->number от ".$this->useful->date_human_from_mysql($agreement->date_sign)."</option>\n";
@@ -46,7 +46,7 @@ class Ajax extends Base_controller {
         $agreemnt_id = intval($agreement_id);
         
         $aps = $this->agreement_model->get_appositions_list($agreement_id);
-        echo "\n<select name=doc_apposition id=doc_apposition class=doc_apposition'>";
+        echo "\n<select id=doc_apposition class=doc_apposition'>";
         echo "<option value=\"0\">-- Укажите приложение --</option>\n";
         foreach ($aps as $ap) {
             echo "<option value='$ap->id'>$ap->number  (закрываем ".$this->useful->date_human_from_mysql($ap->statement_date).")</option>\n";

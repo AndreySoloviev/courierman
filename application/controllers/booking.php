@@ -48,33 +48,25 @@ class Booking extends Base_controller {
 		$this->load->view("footer");		
 	}
 	
-	public function save_user()
+	public function save_data()
 	{
 		$id = $this->input->post('id');
-		$name = $this->input->post('name');
-		$surname = $this->input->post('surname');
-		$email = $this->input->post('email');
-		$password = $this->input->post('password');
 		
-		$flags = 0 << 0;
-			
-		if ($this->input->post('is_courier')) $flags |= U_COURIER;
-		if ($this->input->post('is_manager')) $flags |= U_MANAGER;
-		if ($this->input->post('is_mediaboss')) $flags |= U_MEDIABOSS;
-		if ($this->input->post('is_finance')) $flags |= U_FINANCE;
-		if ($this->input->post('is_boss')) $flags |= U_BOSS;
-		if ($this->input->post('is_banned')) $flags |= U_BANNED;
+		$data = $this->input->post();
+		
+
 		
 		if (!$id)
 		{
-			$this->user_model->add_user($name,$surname,$email,$password,$flags);
+			$this->booking_model->add_book($data);
 		}
 		else
 		{
-			$this->user_model->update_user($name,$surname,$email,$password,$flags,$id);
+			unset($data['id']);
+			$this->booking_model->update_book($data,$id);
 		}
 		
-		header('Location: /users/');
+		header('Location: /booking/');
 
 	}
 		
