@@ -1,0 +1,66 @@
+# ************************************************************
+# Sequel Pro SQL dump
+# Версия 3408
+#
+# http://www.sequelpro.com/
+# http://code.google.com/p/sequel-pro/
+#
+# Адрес: localhost (MySQL 5.5.9)
+# Схема: valencia
+# Время создания: 2012-06-04 13:41:05 +0000
+# ************************************************************
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Дамп таблицы booking
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `booking`;
+
+CREATE TABLE `booking` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` tinytext,
+  `payer_id` int(11) NOT NULL,
+  `seller_id` int(11) DEFAULT NULL,
+  `agency_id` int(11) DEFAULT NULL,
+  `is_our_client` int(4) DEFAULT '0',
+  `adv_type_id` int(11) DEFAULT NULL,
+  `imp_count` int(18) DEFAULT NULL,
+  `date_start` date DEFAULT NULL,
+  `date_stop` date DEFAULT NULL,
+  `date_close` date DEFAULT NULL,
+  `price_price` int(11) DEFAULT NULL,
+  `price_discount` int(11) DEFAULT NULL,
+  `price_selling_discount` int(11) DEFAULT NULL,
+  `manager_id` int(11) DEFAULT NULL,
+  `apposition_id` int(11) DEFAULT NULL,
+  `notes` text,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+LOCK TABLES `booking` WRITE;
+/*!40000 ALTER TABLE `booking` DISABLE KEYS */;
+
+INSERT INTO `booking` (`id`, `title`, `payer_id`, `seller_id`, `agency_id`, `is_our_client`, `adv_type_id`, `imp_count`, `date_start`, `date_stop`, `date_close`, `price_price`, `price_discount`, `price_selling_discount`, `manager_id`, `apposition_id`, `notes`)
+VALUES
+	(1,'sdfasdfasdf',1,0,2,0,0,0,'0000-00-00','0000-00-00','0000-00-00',0,0,0,2,1,'');
+
+/*!40000 ALTER TABLE `booking` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
